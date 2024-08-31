@@ -74,3 +74,26 @@ function getAge234() {
   else message+=" You are a senior citizen";
   document.getElementById("age234").innerHTML = message;
 }
+
+function getBreaks624() {
+  do {
+    var breaks = prompt("Enter a number 1-5")
+  } while (breaks < 0 || breaks > 5)
+  var placeholder = "";
+  for (var i = 0; i < breaks; i++) {
+    placeholder+="<br>";
+    console.log("added line break, breaks624.innerHTML = "+placeholder);
+  }
+  document.getElementById("breaks624").innerHTML = placeholder;
+}
+
+function getCards546() {
+  do {
+    var cards = prompt("Enter a number 2-7");
+  } while (cards < 2 || cards > 7);
+  var placeholder = "";
+  for (var i = 0; i < cards; i++) {
+    placeholder+= "Card #"+i+" ";
+  }
+  document.getElementById("cards546").innerHTML = placeholder;
+}
