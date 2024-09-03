@@ -11,3 +11,42 @@ function makeFooter() {
     data +="</td></tr></table>";
     return(data);
 }  
+
+function makeName(param) {
+    var data = "<strong>Product name: ";
+    data+=param;
+    data+="</strong>";
+    return(data)
+}
+
+function makeID(param) {
+    var data = "<strong>Product ID: ";
+    data+=param;
+    data+="</strong>";
+    return(data)
+}
+
+function makeDescription(param) {
+    var data = "<strong>Product description: "
+    data+=param;
+    data+="</strong>";
+    return(data);
+}
+
+function makeImage(param) {
+    var data = "<img src='../images/"
+    data += param;
+    data += ".png'>";
+    return(data);
+}
+
+function makeLinkbar(param) {
+    var data = "<table style='background-color:lightblue' cellpadding=5><tr><td>";
+    data += "<a href='https://cs190.grungler.com?prodID=";
+    data += param;
+    data += "'>Add to Cart</a></td>";
+    data += "<td><a href='https://cs190.grungler.com'>View Cart</a></td>";
+    data += "<td><a href='https://cs190.grungler.com'>Check out</a></td>";
+    data += "</tr></table >";
+    return(data);
+} 

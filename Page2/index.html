@@ -9,16 +9,34 @@
 <html>
 <head>
     <title>CMPSCI 190</title>
-    <link rel="icon" type="image/x-icon" href = "https://cs190.grungler.com/meatball.png">
-    <link rel="stylesheet" href="https://cs190.grungler.com/style.css">
+    <link rel="icon" type="image/x-icon" href = "../images/meatball.png">
+    <link rel="stylesheet" href="../style.css">
     <meta charset="UTF-8">
     <script src="student.js"></script>
+    <script>
+        prodName="Dell Model 5643X Computer";
+        prodID="5643X";
+        prodDescription="A blazing fast 3 Ghz computer with 2 TB HD, 16 GB RAM, CDRW and DVD";
+    </script>
 </head>
 
 <body class="mainBody">
     <div id="my_header"></div>
     <script>document.getElementById("my_header").innerHTML = makeHeader();</script>
-    Main section of BetterThanAmazon Product Description Page!
+    <table style='position:relative;width:100%;top:5px' border=1 cellpadding=10><tr>
+        <td rowspan=3 style='width:40%;text-align:center;vertical-align:middle'>
+        <span id='prod_img'>Product Image</span></td>
+        <td id='prod_name'>Product Name</td>
+        <td style='text-align:right' id='prod_id'>Product ID</td></tr>
+        <tr><td ALIGN="CENTER" colspan=2>
+        <span id='prod_bar'>Shopping Cart Link Bar</span> </td></tr>
+        <tr><td colspan=2 id='prod_desc'>Product Description</td></tr>
+    </table>
+    <script>document.getElementById("prod_name").innerHTML = makeName(prodName);</script>
+    <script>document.getElementById("prod_id").innerHTML = makeID(prodID);</script>
+    <script>document.getElementById("prod_desc").innerHTML = makeDescription(prodDescription);</script>
+    <script>document.getElementById("prod_img").innerHTML = makeImage(prodID);</script>
+    <script>document.getElementById("prod_bar").innerHTML = makeLinkbar(prodID);</script>
     <div id="my_footer" style="position:fixed;bottom:5px;left:5px;right:5px"></div>
     <script>document.getElementById("my_footer").innerHTML = makeFooter();</script>
 </body>
