@@ -6,6 +6,8 @@ var product1 = { name:"HP 4426", id:"4426", desc:"Newest and Best Laptop from HP
 var product2 = { name:"Apple 88123 iPad", id:"88123", desc:"Apple Tablet Computer"};
 var product3 = { name:"Dell Dimension 2400", id:"2400X", desc:"A fast 2.4 ghz computer"};
 
+var imgurl842 = 'https://www.college1.com/images/'
+var cardimgurl547 = "https://www.college1.com/images/cards/gbCard"
 function getHeader() {
     var data ="<h3 style='text-align:right'>";
     var now = new Date();
@@ -44,6 +46,7 @@ function makeMenu4(size) {
         temp +=")\""
         temp +=">Product #"+(i+1)+"</button>"
     }
+    temp += "<button onClick=\"Javascript:dealCards833()\">Deal Cards</button>"
     temp += "</span>"
     return(temp);
 }
@@ -58,6 +61,17 @@ function makeMain7(myproduct) {
     temp+="Product ID: <strong>"+myproduct.id+"</strong><br>"
     temp+="Product Description: <strong>"+myproduct.desc+"</strong><br>"
     temp+="Shopping Cart Link Bar <br>"
-    temp+="Product Image: <br>"
+    temp+="<img src=\""
+    temp+=imgurl842+myproduct.id+".gif\""
+    temp+="><br>"
     return(temp);
+}
+
+function dealCards833() {
+    var temp = "<img id=\"card1\" src=\""+cardimgurl547+"35"+".gif\">"
+    temp += "<img id=\"card2\" src=\""+cardimgurl547+"51"+".gif\">"
+    temp += "<img id=\"card3\" src=\""+cardimgurl547+"52"+".gif\">"
+    temp += "<img id=\"card4\" src=\""+cardimgurl547+"52"+".gif\">"
+    temp += "<img id=\"card5\" src=\""+cardimgurl547+"52"+".gif\">"
+    document.getElementById("main925").innerHTML = temp;
 }
