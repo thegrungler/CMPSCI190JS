@@ -8,6 +8,9 @@ var product3 = { name:"Dell Dimension 2400", id:"2400X", desc:"A fast 2.4 ghz co
 
 var imgurl842 = 'https://www.college1.com/images/'
 var cardimgurl547 = "https://www.college1.com/images/cards/gbCard"
+var cardnum224 = -1;
+var stack = new Array(5);
+
 function getHeader() {
     var data ="<h3 style='text-align:right'>";
     var now = new Date();
@@ -47,15 +50,17 @@ function makeMenu4(size) {
         temp +=">Product #"+(i+1)+"</button>"
     }
     temp += "<button onClick=\"Javascript:dealCards833()\">Deal Cards</button>"
+    temp += "<button onClick=\"Javascript:hitCard487()\">Hit</button>";
     temp += "</span>"
     return(temp);
 }
 
 function execButton733(product) {
     document.getElementById("main925").innerHTML = makeMain7(product)
-}
+} 
 
 function makeMain7(myproduct) {
+    cardnum224 = -1;
     var temp = "<strong>My product:</strong> <br><br>"
     temp+="Product Name: <strong>"+myproduct.name+"</strong><br>"
     temp+="Product ID: <strong>"+myproduct.id+"</strong><br>"
@@ -68,10 +73,30 @@ function makeMain7(myproduct) {
 }
 
 function dealCards833() {
-    var temp = "<img id=\"card1\" src=\""+cardimgurl547+"35"+".gif\">"
-    temp += "<img id=\"card2\" src=\""+cardimgurl547+"51"+".gif\">"
-    temp += "<img id=\"card3\" src=\""+cardimgurl547+"52"+".gif\">"
-    temp += "<img id=\"card4\" src=\""+cardimgurl547+"52"+".gif\">"
-    temp += "<img id=\"card5\" src=\""+cardimgurl547+"52"+".gif\">"
+    cardnum224 = 2;
+    var card_number = Math.floor((Math.random()*52))
+    var temp = ""
+    for (var i = 1; i<=cardnum224; i++) {
+        temp += "<img id=\"card"+i+"\" src=\""+cardimgurl547+card_number+".gif\">"
+        stack[(i-1)] = card_number;
+        do {
+            card_number = Math.floor((Math.random()*52));
+        } while (stack.includes(card_number));
+    } 
+    for (var i = cardnum224+1; i <= 5; i++) {
+        temp += "<img id=\"card"+i+"\" src=\""+cardimgurl547+"52"+".gif\">"
+    }
+    console.log(stack);
     document.getElementById("main925").innerHTML = temp;
+}
+
+function hitCard487() {
+    if (cardnum224 == 5) return;
+    cardnum224+=1;
+    temp = document.getElementById("main925").innerHTML
+    var card_number;
+    do {
+        card_number = Math.floor((Math.random()*52));
+    } while (stack.includes(card_number))
+    document.getElementById(("card"+cardnum224)).src = cardimgurl547+card_number+".gif"
 }
