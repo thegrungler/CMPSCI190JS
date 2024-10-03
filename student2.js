@@ -2,11 +2,11 @@ companyname3 = "DVD Sales LTD";
 address5 = "321 Main St. Valencia, CA 91344";
 phonenumber2 = "(555) 257-1234"
 
-var product1 = { name:"HP 4426", id:"4426", desc:"Newest and Best Laptop from HP Computer"};
-var product2 = { name:"Apple 88123 iPad", id:"88123", desc:"Apple Tablet Computer"};
-var product3 = { name:"Dell Dimension 2400", id:"2400X", desc:"A fast 2.4 ghz computer"};
+var product1 = { name:"The Slammin Salmon", id:"4426", desc:"Comedy about a former boxing champion starting a gourmet restaurant"};
+var product2 = { name:"Oppenheimer", id:"88123", desc:"Historical drama about the invention of the atomic bomb"};
+var product3 = { name:"Barbie", id:"2400", desc:"Comedy centering around classic kids toys Barbie and Ken"};
 
-var imgurl842 = 'https://www.college1.com/images/'
+var imgurl842 = 'images/'
 var cardimgurl547 = "https://www.college1.com/images/cards/gbCard"
 var cardnum224 = -1;
 var stack = new Array(5);
@@ -65,9 +65,9 @@ function makeMain7(myproduct) {
     temp+="Product Name: <strong>"+myproduct.name+"</strong><br>"
     temp+="Product ID: <strong>"+myproduct.id+"</strong><br>"
     temp+="Product Description: <strong>"+myproduct.desc+"</strong><br>"
-    temp+="Shopping Cart Link Bar <br>"
-    temp+="<img src=\""
-    temp+=imgurl842+myproduct.id+".gif\""
+    temp+=makeLinkBar946(myproduct)
+    temp+="<img height='500' with='300' src=\""
+    temp+=imgurl842+myproduct.id+".jpg\""
     temp+="><br>"
     return(temp);
 }
@@ -99,4 +99,30 @@ function hitCard487() {
         card_number = Math.floor((Math.random()*52));
     } while (stack.includes(card_number))
     document.getElementById(("card"+cardnum224)).src = cardimgurl547+card_number+".gif"
+}
+
+function makeLinkBar946(product) {
+    temp = ""
+    temp += "<form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>"
+    temp += ""
+    temp += "<!-- Identify your business so that you can collect the payments. -->"
+    temp += "<input type='hidden' name='business' value='cmnecessary@my.canyons.edu'>"
+    temp += ""
+    temp += "<!-- Specify a PayPal Shopping Cart Add to Cart button. -->"
+    temp += "<input type='hidden' name='cmd' value='_cart'>"
+    temp += "<input type='hidden' name='add' value='1'>"
+    temp += ""
+    temp += "<!-- Specify details about the item that buyers will purchase. -->"
+    temp += "<input type='hidden' name='item_name' value='"+product.name+"'>"
+    temp += "<input type='hidden' name='amount' value='9.99'>"
+    temp += "<input type='hidden' name='currency_code' value='USD'>"
+    temp += ""
+    temp += "<!-- Display the payment button. -->"
+    temp += "<input type='image' name='submit'"
+    temp += "  src='https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif'"
+    temp += "  alt='Add to Cart'>"
+    temp += "<img alt='' width='1' height='1'"
+    temp += "  src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif'>"
+    temp += "</form>"
+    return temp
 }
