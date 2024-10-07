@@ -11,6 +11,9 @@ var cardimgurl547 = "https://www.college1.com/images/cards/gbCard"
 var cardnum224 = -1;
 var stack = new Array(5);
 
+var adnum639 = 1;
+var winobj804 = -1;
+
 function getHeader() {
     var data ="<h3 style='text-align:right'>";
     var now = new Date();
@@ -51,6 +54,8 @@ function makeMenu4(size) {
     }
     temp += "<button onClick=\"Javascript:dealCards833()\">Deal Cards</button>"
     temp += "<button onClick=\"Javascript:hitCard487()\">Hit</button>";
+    temp += "<button onClick='Javscript:popupAd399()'>PopUp Ad</button>"
+    temp += "<button onClick='Javascript:closeAd399()'>Close Ad</button>"
     temp += "</span>"
     return(temp);
 }
@@ -125,4 +130,35 @@ function makeLinkBar946(product) {
     temp += "  src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif'>"
     temp += "</form>"
     return temp
+}
+
+function popupAd399() {
+    if (winobj804 != -1) winobj804.close()
+    winobj804 = open("", "popup_window","width=500,height=80")
+    var popup_html = "<table width=520 height=100 bgcolor='black' color='white'>"
+    popup_html += "<tr><td>" 
+    switch(adnum639) {
+        case 1:
+            popup_html += "<a href='http://cs190.grungler.com'><h1 align='center'>Buy the Oppenheimer movie here!</h1></a>"
+            adnum639 = 2;
+            break;
+        case 2:
+            popup_html += "<a href='http://cs190.grungler.com'><h1 align='center'>Buy the Barbie movie here!</h1></a>"
+            adnum639 = 3;
+            break;
+        case 3:
+            popup_html += "<a href='http://cs190.grungler.com'><h1 align='center'>Buy The Slammin Salmon here!</h1></a>"
+            adnum639 = 1;
+            break;
+    }
+    popup_html += "<a href='http://cs190.grungler.com'><h1 align='center'>Buy the Oppenheimer movie here!</h1></a>"
+    popup_html +="</td></tr>"
+    popup_html +="</table>"
+    winobj804.document.write(popup_html)
+    winobj804.focus();
+}
+
+function closeAd399() {
+    winobj804.close();
+    winobj804 = -1;
 }
