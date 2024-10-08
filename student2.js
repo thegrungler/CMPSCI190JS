@@ -5,6 +5,11 @@ phonenumber2 = "(555) 257-1234"
 var product1 = { name:"The Slammin Salmon", id:"4426", desc:"Comedy about a former boxing champion starting a gourmet restaurant"};
 var product2 = { name:"Oppenheimer", id:"88123", desc:"Historical drama about the invention of the atomic bomb"};
 var product3 = { name:"Barbie", id:"2400", desc:"Comedy centering around classic kids toys Barbie and Ken"};
+var product4
+var product5
+
+var jsonobj4 = {"type":"dvdcd","number":"1"}
+var jsonobj5 = {"type":"dvdcd","number":"2"}
 
 var imgurl842 = 'images/'
 var cardimgurl547 = "https://www.college1.com/images/cards/gbCard"
@@ -197,3 +202,25 @@ function checkForm877() {
         return false;
     }
 }
+
+function getProduct549(jsonobj) {
+    var server = 'https://www.college1.com/getproduct.php';
+    var jsonstr = JSON.stringify(jsonobj);           // This is a string in JSON format
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", server+"?jsonstr=" + jsonstr, true); // open connection to server
+    xmlhttp.send();  // send request, causes onreadystatechange to run when reply is ready 
+  
+    xmlhttp.onreadystatechange = function () {  
+    //console.log('hello ' + this.readyState + ' ' + this.status);
+    if (this.readyState == 4 && this.status == 200) {
+      replystr =  this.responseText;           // replystr MUST BE GLOBAL
+      //console.log(replystr);
+      if (product4 == null)
+          product4 = JSON.parse(replystr);
+      else if (product5 == null)
+          product5 = JSON.parse(replystr);
+      else
+          console.log('Error, no object variable available');
+   }
+   };
+  }
