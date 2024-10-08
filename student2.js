@@ -56,6 +56,7 @@ function makeMenu4(size) {
     temp += "<button onClick=\"Javascript:hitCard487()\">Hit</button>";
     temp += "<button onClick='Javscript:popupAd399()'>PopUp Ad</button>"
     temp += "<button onClick='Javascript:closeAd399()'>Close Ad</button>"
+    temp += "<button onClick='Javascript:makeForm463()'>Enter Data</button>"
     temp += "</span>"
     return(temp);
 }
@@ -161,4 +162,38 @@ function popupAd399() {
 function closeAd399() {
     winobj804.close();
     winobj804 = -1;
+}
+
+function makeForm463() {
+    var form_html = "<form onSubmit='return checkForm877()' name='customerform' action='https://www.college1.com/classes/javascript/survey.php' method='post'>"
+    form_html += "<table width=100% border=1>"
+    form_html += "<tr><td>First Name: <input type='text' name='firstname'></td>"
+    form_html += "<td align=right> Last Name: <input type='text' name='lastname'></td></tr>"
+    form_html += "<tr><td colspan=2>Address: <input type='text' name='address' size =50></td></tr>"
+    form_html += "<tr><td>City: <input type='text' name='city'></td>"
+    form_html += "<td align=right>State: <input type='text' name='state' size=3> "
+    form_html += "Zip: <input type='text' name='zip' size=6></td>"
+    form_html += "<tr><td colspan=2>Email Address: <input type='text' name='emailaddr' size=50>"
+    form_html += "</td></tr><tr><td><input type='submit' value='Submit'></td>"
+    form_html += "<input type='hidden' name='send_email' value='cmnecessary@my.canyons.edu'>"
+    form_html += "<td align=right><input type='reset'></td></tr></table></form>"
+    document.getElementById("main925").innerHTML = form_html
+}
+
+function checkForm877() {
+    var missing_fields = "Missing Fields:\n"
+    if (document.customerform.firstname.value.length <= 0) {missing_fields += "First Name\n"}
+    if (document.customerform.lastname.value.length <= 0) {missing_fields += "Last Name\n"}
+    if (document.customerform.address.value.length <= 0) {missing_fields += "Address\n"}
+    if (document.customerform.city.value.length <= 0) {missing_fields += "City\n"}
+    if (document.customerform.state.value.length <= 0) {missing_fields += "State\n"}
+    if (document.customerform.zip.value.length <= 0) {missing_fields += "Zip Code\n"}
+    if (document.customerform.emailaddr.value.length <= 0) {missing_fields += "Email Address\n"}
+    if (missing_fields == "Missing Fields:\n") {
+        return true;
+    }
+    else {
+        alert(missing_fields)
+        return false;
+    }
 }
